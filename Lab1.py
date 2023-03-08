@@ -34,7 +34,8 @@ def notes():
             print(array)
         return render_template('./notes.html', note=array)
     else:
-        return render_template('./notes.html', note=array)
+        array_2 = select_from_db()
+        return render_template('./notes.html', note=array_2)
 
 def creationDB():
     global connection
@@ -46,7 +47,7 @@ def creationDB():
 
     createNotesTableString="""CREATE TABLE IF NOT EXISTS Notes (
         Id INTEGER PRIMARY KEY AUTOINCREMENT,
-        SheetId INTEGER PRIMARY KEY AUTOINCREMENT,
+        SheetId INTEGER ID,
         Header TEXT,
         Text TEXT,
         FOREIGN KEY (SheetId) REFERENCES Sheets(Id)
@@ -64,6 +65,15 @@ def insert_into_db(note):
     cur.execute(queryString, (note,))
     conn.commit()
 
+
+def select_from_db():
+    conn=sqlite3.connect("./NotesDatabase.db")
+    queryString="""
+        SELECT name FROM Sheets
+    """
+    cur = conn.cursor()
+    cur.execute(queryString).fetchall()
+    return array
 
 if __name__ =="__main__":
     creationDB()
