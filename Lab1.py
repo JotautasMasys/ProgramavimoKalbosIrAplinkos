@@ -3,7 +3,8 @@ import sqlite3
 
 variable=0
 array=[]
-
+connection=sqlite3.connect("./NotesDatabase.db")
+#connection=sqlite3.connect("./NotesDatabase.db")
 app = Flask(__name__,static_url_path='/')
 
 @app.route("/")
@@ -29,15 +30,15 @@ def notes():
         args = request.form.get("note2")
         if(args):
             array.append(args)
+            insert_into_db(args)
             print(array)
         return render_template('./notes.html', note=array)
     else:
         return render_template('./notes.html', note=array)
 
 def creationDB():
-    connection=sqlite3.connect("C:\\Users\\1538848\\Dekstop\\NotesDataBase.db")
+    global connection
     cursor=connection.cursor()
-
     createTableString="""CREATE TABLE IF NOT EXISTS Sheets (
         Id INTEGER PRIMARY KEY AUTOINCREMENT,
         Name TEXT NOT NULL
@@ -54,17 +55,16 @@ def creationDB():
     cursor.execute(createTableString)
     cursor.execute(createNotesTableString)
 
-
-def insert_into_db():
-    global connection
+def insert_into_db(note):
+    conn=sqlite3.connect("./NotesDatabase.db")
     queryString="""
-        INSERT INTO Sheets (Name) VALUES (?) test
+        INSERT INTO Sheets (Name) VALUES (?)
     """
-    cur = connection.cursor()
-    cur.execute(queryString, ('test',))
+    cur = conn.cursor()
+    cur.execute(queryString, (note,))
+    conn.commit()
 
 
 if __name__ =="__main__":
     creationDB()
-    insert_into_db()
     app.run(debug="true")
