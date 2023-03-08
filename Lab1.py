@@ -32,10 +32,9 @@ def notes():
             array.append(args)
             insert_into_db(args)
             print(array)
-        return render_template('./notes.html', note=array)
+        return render_template('./notes.html', note=select_from_db())
     else:
-        array_2 = select_from_db()
-        return render_template('./notes.html', note=array_2)
+        return render_template('./notes.html', note=select_from_db())
 
 def creationDB():
     global connection
