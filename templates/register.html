@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registracija</title>
+</head>
+<style>
+    .button{
+        background-color: green;
+        width: 15vw;
+        height: 5vh;
+        padding: auto;
+        color: white;
+        border: none;
+        border-radius: 15px;
+    }
+
+    .button:hover{
+        background-color: aqua;
+        cursor: pointer;
+    }
+
+    .diva{
+        background-color: purple;
+        text-align: center;
+    }
+</style>
+<body>
+    <div class="diva">
+        <h1>Užrašinė</h1>
+    </div>
+    
+    <form action="/register" method="post">
+        <input id="register" name="register" value="">
+        <br>
+        <br>
+        <input class="button" type="submit" value="Submit">
+    </form>
+    div class="notes">
+        {%for i in note%}
+
+        <h2>
+            {[i]}
+        </h2>
+        {%endfor%}
+    </div>
+
+</p>
+{[note]}
+</p>
+
+</body>
+</html>
