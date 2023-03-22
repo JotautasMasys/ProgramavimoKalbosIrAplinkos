@@ -77,6 +77,17 @@ def select_from_db():
     cur = conn.cursor()
     cur.execute(queryString).fetchall()
     return array
+#------------------------------------------------------------------------------------------------------------------------------
+#Ekspermentinis
+
+def creationRegDB():
+    global connection
+    cursor=connection.cursor()
+    createRegTableStrings="""CREATE TABLE IF NOT EXISTS Sheets (
+    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT NOT NULL
+    )
+    """
 
 #--------------------------------------------------------------------------------------------------------------------
 #Svetainiu ijungimo kodas:
