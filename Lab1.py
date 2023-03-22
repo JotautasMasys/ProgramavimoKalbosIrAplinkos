@@ -63,6 +63,7 @@ def insert_into_db(note):
     cur = conn.cursor()
     cur.execute(queryString, (note,))
     conn.commit()
+    #kazkas
 
 
 def select_from_db():
