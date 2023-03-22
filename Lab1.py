@@ -7,22 +7,26 @@ connection=sqlite3.connect("./NotesDatabase.db")
 #connection=sqlite3.connect("./NotesDatabase.db")
 app = Flask(__name__,static_url_path='/')
 
+#Pirma svetaine
 @app.route("/")
 def mano_funkcija():
     return ("Labas")
 
+#Antra svetaine
 @app.route("/test")
 def test_route():
     if (request.args.get("name")):
         plus_one()
     return render_template('./index.html', var=plus_one())
 
+#trecia svetaine
 @app.route("/debug")
 def plus_one():
     global variable
     variable = variable + 1
     return str(variable)
 
+#Ketvirta svetaine
 @app.route("/notes", methods=["GET","POST"])
 def notes():
     if(request.method == "POST"):
@@ -74,6 +78,7 @@ def select_from_db():
     cur.execute(queryString).fetchall()
     return array
 
+#Penkta svetaine
 @app.route("/register")
 def register():
     if(request.method == "POST"):
@@ -124,7 +129,7 @@ def select_from_REG():
     cur.execute(queryString).fetchall()
     return array
 
-
+#Svetainiu ijungimo kodas:
 if __name__ =="__main__":
     creationDB()
     #creationREG()
