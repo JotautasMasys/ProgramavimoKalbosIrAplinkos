@@ -88,10 +88,41 @@ def creationRegDB():
     Name TEXT NOT NULL
     )
     """
+    createRegNotesTableString="""CREATE TABLE IF NOT EXISTS Notes (
+        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+        SheetId INTEGER ID,
+        Header TEXT,
+        Text TEXT,
+        Type TEXT,
+        Name TEXT,
+        Id TEXT,
+        Placeholder TEXT,
+        FOREIGN KEY (SheetId) REFERENCES Sheets(Id)
+    )"""
+
+    cursor.execute(createRegTableStrings)
+    cursor.execute(createRegNotesTableString)
+
+def insert_into_Reg_db(Note):
+    conn=sqlite3.connect("./RegNotesDatabase.db")
+    queryString="""
+        INSERT INTO Sheets (Name) VALUES (?)
+    """
+    cur = conn.cursor()
+    cur.execute(queryString, (Note,))
+    conn.commit()
+
+def select_from_Reg_db():
+    conn=sqlite3.connect("./NotesDatabase.db")
+    queryString="""
+        SELECT name FROM Sheets
+    """
+    cur = conn.cursor()
+    cur.execute(queryString).fetchall()
+    return array
 
 #--------------------------------------------------------------------------------------------------------------------
 #Svetainiu ijungimo kodas:
 if __name__ =="__main__":
     creationDB()
-    #creationREG()
     app.run(debug="true")
