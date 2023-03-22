@@ -10,7 +10,7 @@ app = Flask(__name__,static_url_path='/')
 #Pirma svetaine
 @app.route("/")
 def mano_funkcija():
-    return ("Labas, šis puslapis yra eksperimentinis. Eikite i regisrtracija ir notes:")
+    return ("Labas")
 
 #Antra svetaine
 @app.route("/test")
@@ -77,6 +77,7 @@ def select_from_db():
     cur = conn.cursor()
     cur.execute(queryString).fetchall()
     return array
+
 #--------------------------------------------------------------------------------------------------------------------
 #Svetainiu ijungimo kodas:
 if __name__ =="__main__":
