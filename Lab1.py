@@ -32,6 +32,7 @@ def notes():
     if(request.method == "POST"):
         global array
         args = request.form.get("note2")
+        
         if(args):
             array.append(args)
             insert_into_db(args)
@@ -125,4 +126,5 @@ def select_from_Reg_db():
 #Svetainiu ijungimo kodas:
 if __name__ =="__main__":
     creationDB()
+    creationRegDB()
     app.run(debug="true")
