@@ -78,7 +78,7 @@ def select_from_db():
     cur.execute(queryString).fetchall()
     return array
 #-------------------------------------------------------------------------------------------------------------------------------------
-#Penkta svetaine
+#Penkta svetaine/ NEVEIKIA
 @app.route("/register")
 def register():
     if(request.method == "POST"):
