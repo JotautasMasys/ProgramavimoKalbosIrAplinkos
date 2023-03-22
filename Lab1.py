@@ -10,7 +10,7 @@ app = Flask(__name__,static_url_path='/')
 #Pirma svetaine
 @app.route("/")
 def mano_funkcija():
-    return ("Labas")
+    return ("Labas, šis puslapis yra eksperimentinis - jame nieko nebus iškyrus šie žodžiai ir žodis 'Labas'")
 
 #Antra svetaine
 @app.route("/test")
@@ -25,7 +25,7 @@ def plus_one():
     global variable
     variable = variable + 1
     return str(variable)
-
+#--------------------------------------------------------------------------------------------------------------------------------------------------
 #Ketvirta svetaine
 @app.route("/notes", methods=["GET","POST"])
 def notes():
@@ -77,7 +77,7 @@ def select_from_db():
     cur = conn.cursor()
     cur.execute(queryString).fetchall()
     return array
-
+#-------------------------------------------------------------------------------------------------------------------------------------
 #Penkta svetaine
 @app.route("/register")
 def register():
@@ -129,6 +129,7 @@ def select_from_REG():
     cur.execute(queryString).fetchall()
     return array
 
+#------------------------------------------------------------------------------------------------
 #Svetainiu ijungimo kodas:
 if __name__ =="__main__":
     creationDB()
